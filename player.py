@@ -59,9 +59,11 @@ class Player(pygame.sprite.Sprite):
             self.direction.x = 0
 
     def get_status(self):
-        #if the player is not moving: add _idle to the status
+        #idle
         if self.direction.magnitude() == 0:
             self.status = self.status.split('_')[0] + '_idle'
+
+        # tool use 53:36 i tutorialvideo: https://www.youtube.com/watch?v=T4IX36sP_0c
 
     def move(self, dt):
 
