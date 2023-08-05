@@ -12,7 +12,7 @@ class Timer:
         self.start_time = pygame.time.get_ticks()
 
     def deactivate(self):
-        self.activate = False
+        self.active = False
         self.start_time = 0
 
     def update(self):
