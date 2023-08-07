@@ -95,7 +95,6 @@ class Player(pygame.sprite.Sprite):
                 self.tool_index += 1
                 self.tool_index = self.tool_index if self.tool_index < len(self.tools) else 0
                 self.selected_tool = self.tools[self.tool_index]
-                print(self.selected_tool)
 
             #seed use
             if keys[pygame.K_LCTRL]:
