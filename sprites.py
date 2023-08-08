@@ -1,6 +1,8 @@
 import pygame
 from settings import *
 from settings import LAYERS
+from random import randint
+from timer import Timer
 
 class Generic(pygame.sprite.Sprite):
 	def __init__(self, pos, surf, groups, z = LAYERS['main']):
@@ -40,4 +42,21 @@ class WildFlower(Generic):
 		
 class Tree(Generic):
 	def __init__(self, pos, surf, groups, name):
-		super().__init__(pos, surf, groups)		
+		super().__init__(pos, surf, groups)
+
+		# apples
+		self.apple_surf = pygame.image.load('./assets/graphics/fruit/apple.png')
+		self.apple_pos = APPLE_POS[name]
+		self.apple_sprites = pygame.sprite.Group()
+		self.create_fruit()
+
+	def create_fruit(self):
+		for pos in self.apple_pos:
+			if randint(0,10) < 2:
+				x = pos[0] + self.rect.left
+				y = pos[1] + self.rect.top
+				Generic(
+					pos = (x,y), 
+					surf = self.apple_surf, 
+					groups = [self.apple_sprites,self.groups()[0]],
+					z = LAYERS['fruit'])
