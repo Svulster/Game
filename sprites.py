@@ -1,7 +1,5 @@
-from typing import Any
 import pygame
 from settings import *
-from settings import LAYERS
 from random import randint, choice
 from timer import Timer
 
@@ -35,7 +33,7 @@ class Water(Generic):
 
 	def update(self,dt):
 		self.animate(dt)
-		
+
 class WildFlower(Generic):
 	def __init__(self, pos, surf, groups):
 		super().__init__(pos, surf, groups)
@@ -65,12 +63,12 @@ class Tree(Generic):
 		# tree attributes
 		self.health = 5
 		self.alive = True
-		stump_path = f'./assets/graphics/stumps/{"small" if name == "Small" else "large"}.png'
+		stump_path = f'assets/graphics/stumps/{"small" if name == "Small" else "large"}.png'
 		self.stump_surf = pygame.image.load(stump_path).convert_alpha()
 		self.invul_timer = Timer(200)
 
 		# apples
-		self.apple_surf = pygame.image.load('./assets/graphics/fruit/apple.png')
+		self.apple_surf = pygame.image.load('assets/graphics/fruit/apple.png')
 		self.apple_pos = APPLE_POS[name]
 		self.apple_sprites = pygame.sprite.Group()
 		self.create_fruit()
